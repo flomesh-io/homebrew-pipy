@@ -2,9 +2,9 @@
 
 ## How do I install these formulae?
 
-`brew install flomesh-io/pipy/<formula>`
+`brew install flomesh-io/pipy/pipy`
 
-Or `brew tap flomesh-io/pipy` and then `brew install <formula>`.
+Or `brew tap flomesh-io/pipy` and then `brew install pipy`.
 
 ## Documentation
 
