@@ -8,6 +8,12 @@ class Pipy < Formula
   license "MIT-Modern-Variant"
   head "https://github.com/flomesh-io/pipy.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/flomesh-io/homebrew-pipy/releases/download/pipy-0.30.0-23"
+    sha256 big_sur:      "c917a0a7897eb72813c111eecb45e07e86a2c7701a045426ba3495a56885ac0a"
+    sha256 x86_64_linux: "475b5dfed47b12f9cc4eabcc012c2b1ca7b171bfd81bcd7c6d2bb626420589dc"
+  end
+
   depends_on "cmake" => :build
   depends_on "llvm" => :build
   depends_on "node" => :build
