@@ -11,9 +11,13 @@ class Pipy < Formula
   depends_on "cmake" => :build
   depends_on "llvm" => :build
   # xxxdepends_on "node" => :build
-  depends_on "openssl@1.1" => :build
+  depends_on "openssl@1.1"
 
   def install
+    ENV.cxx11
+    # link against system libc++ instead of llvm provided libc++
+    ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib
+
     openssl = Formula["openssl@1.1"]
 
     ENV["CI_COMMIT_SHA"] = "01e07372d15efb6cebd8723d612791c45c9f9dc4"
