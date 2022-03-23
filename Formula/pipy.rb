@@ -25,8 +25,8 @@ class Pipy < Formula
 
     mkdir "build" do
       system "cmake", "..", *std_cmake_args,
-                            "-DCMAKE_C_COMPILER=clang",
-                            "-DCMAKE_CXX_COMPILER=clang++",
+                            # "-DCMAKE_C_COMPILER=clang",
+                            # "-DCMAKE_CXX_COMPILER=clang++",
                             "-DPIPY_GUI=ON",
                             "-DPIPY_TUTORIAL=ON",
                             "-DCMAKE_BUILD_TYPE=Release",
