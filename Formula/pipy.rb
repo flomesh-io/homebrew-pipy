@@ -12,11 +12,9 @@ class Pipy < Formula
   depends_on "llvm" => :build
   depends_on "node" => :build
   depends_on "openssl@1.1" => :build
-  depends_on "snappy" => :build
 
   def install
     openssl = Formula["openssl@1.1"]
-    snappy = Formula["snappy"]
 
     ENV["CI_COMMIT_SHA"] = "01e07372d15efb6cebd8723d612791c45c9f9dc4"
     ENV["CI_COMMIT_TAG"] = "0.30.0-23"
@@ -32,8 +30,7 @@ class Pipy < Formula
                             "-DPIPY_GUI=ON",
                             "-DPIPY_TUTORIAL=ON",
                             "-DCMAKE_BUILD_TYPE=Release",
-                            "-DPIPY_OPENSSL=#{openssl.opt_prefix}",
-                            "-DCMAKE_CXX_FLAGS=-I#{snappy.opt_include}"
+                            "-DPIPY_OPENSSL=#{openssl.opt_prefix}"
       system "make"
     end
 
