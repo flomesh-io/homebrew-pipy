@@ -12,6 +12,7 @@ class Pipy < Formula
   depends_on "llvm" => :build
   depends_on "node" => :build
   depends_on "openssl@1.1"
+  depends_on "snappy"
 
   def install
     ENV.cxx11
@@ -19,6 +20,7 @@ class Pipy < Formula
     ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib
 
     openssl = Formula["openssl@1.1"]
+    snappy = Formula["snappy"]
 
     ENV["CI_COMMIT_SHA"] = "01e07372d15efb6cebd8723d612791c45c9f9dc4"
     ENV["CI_COMMIT_TAG"] = "0.30.0-23"
@@ -27,14 +29,18 @@ class Pipy < Formula
     system "npm", "install", *Language::Node.local_npm_install_args
     system "npm", "run", "build"
 
+    args = %W[
+      -DCMAKE_C_COMPILER=clang
+      -DCMAKE_CXX_COMPILER=clang++
+      -DPIPY_GUI=ON
+      -DPIPY_TUTORIAL=ON
+      -DCMAKE_BUILD_TYPE=Release
+      -DPIPY_OPENSSL=#{openssl.opt_prefix}
+      -DCMAKE_CXX_FLAGS=-I#{snappy.opt_include}
+    ]
+
     mkdir "build" do
-      system "cmake", "..", *std_cmake_args,
-                            "-DCMAKE_C_COMPILER=clang",
-                            "-DCMAKE_CXX_COMPILER=clang++",
-                            "-DPIPY_GUI=ON",
-                            "-DPIPY_TUTORIAL=ON",
-                            "-DCMAKE_BUILD_TYPE=Release",
-                            "-DPIPY_OPENSSL=#{openssl.opt_prefix}"
+      system "cmake", "..", *std_cmake_args, *args
       system "make"
     end
 
