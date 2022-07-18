@@ -3,8 +3,8 @@ require "language/node"
 class Pipy < Formula
   desc "Programmable network proxy for the cloud, edge and IoT"
   homepage "https://flomesh.io"
-  url "https://github.com/flomesh-io/pipy/archive/refs/tags/0.30.0-23.tar.gz"
-  sha256 "da72407e31f9dc5daccea17a88ae25c04fd904539cd2104b02a0ef1b36990ac7"
+  url "https://github.com/flomesh-io/pipy/archive/refs/tags/0.50.0-18.tar.gz"
+  sha256 "baddaca193eb371ef854f07f00a9542bd675f3e21b29d99f7c0968deb3ad3811"
   license "MIT-Modern-Variant"
   head "https://github.com/flomesh-io/pipy.git", branch: "main"
 
@@ -28,9 +28,9 @@ class Pipy < Formula
     openssl = Formula["openssl@1.1"]
     snappy = Formula["snappy"]
 
-    ENV["CI_COMMIT_SHA"] = "01e07372d15efb6cebd8723d612791c45c9f9dc4"
-    ENV["CI_COMMIT_TAG"] = "0.30.0-23"
-    ENV["CI_COMMIT_DATE"] = "Wed, 23 Mar 2022 12:51:52 +0800"
+    ENV["CI_COMMIT_SHA"] = "95eaf9f8e263b775e98167ec94ad5458a230c527"
+    ENV["CI_COMMIT_TAG"] = "0.50.0-18"
+    ENV["CI_COMMIT_DATE"] = "Mon, 18 Jul 2022 15:35:52 +0800"
 
     system "npm", "install", *Language::Node.local_npm_install_args
     system "npm", "run", "build"
