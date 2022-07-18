@@ -56,7 +56,6 @@ class Pipy < Formula
   test do
     (testpath/"hello.js").write <<~EOS
       pipy()
-
       .listen(8080)
         .serveHTTP(
           new Message('Hi, there!\n')
