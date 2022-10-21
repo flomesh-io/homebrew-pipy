@@ -18,15 +18,13 @@ class Pipy < Formula
   depends_on "cmake" => :build
   depends_on "llvm@14" => :build
   depends_on "node" => :build
-  depends_on "pkg-config" => :build
   depends_on "openssl@1.1"
   depends_on "snappy"
 
   def install
     ENV.cxx11
     # link against system libc++ instead of llvm provided libc++
-    ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib if OS.mac?
-    ENV.llvm_clang if OS.mac? && (DevelopmentTools.clang_build_version >= 1100)
+    ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib
 
     openssl = Formula["openssl@1.1"]
     snappy = Formula["snappy"]
@@ -39,8 +37,6 @@ class Pipy < Formula
     system "npm", "run", "build"
 
     args = %W[
-      -DCMAKE_C_COMPILER=clang
-      -DCMAKE_CXX_COMPILER=clang++
       -DPIPY_GUI=ON
       -DPIPY_TUTORIAL=ON
       -DCMAKE_BUILD_TYPE=Release
