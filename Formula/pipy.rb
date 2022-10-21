@@ -9,10 +9,9 @@ class Pipy < Formula
   head "https://github.com/flomesh-io/pipy.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/flomesh-io/homebrew-pipy/releases/download/pipy-0.50.0-18"
-    rebuild 1
-    sha256 big_sur:      "d61ef9965fa00d3863cb7904c17cda76cab7f1308b8f0396a92df4d9d4629a40"
-    sha256 x86_64_linux: "b8c75a6ec85a468103e5b84ce6e2ea51aae5c4276c7d448d5611633fb06114bf"
+    root_url "https://github.com/flomesh-io/homebrew-pipy/releases/download/pipy-0.70.0-2"
+    sha256 big_sur:      "09582e83eb6433c6b7b06bbf492786d364493078286be9a1fb2eee50b20005f5"
+    sha256 x86_64_linux: "889d03b735c4cc9eab78c0445e2770ec373a67130638fcfcb8955af70328ee24"
   end
 
   depends_on "cmake" => :build
