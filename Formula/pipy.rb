@@ -3,8 +3,8 @@ require "language/node"
 class Pipy < Formula
   desc "Programmable network proxy for the cloud, edge and IoT"
   homepage "https://flomesh.io"
-  url "https://github.com/flomesh-io/pipy/archive/refs/tags/0.50.0-18.tar.gz"
-  sha256 "baddaca193eb371ef854f07f00a9542bd675f3e21b29d99f7c0968deb3ad3811"
+  url "https://github.com/flomesh-io/pipy/archive/refs/tags/0.70.0-2.tar.gz"
+  sha256 "98d42b75eeace8a480ebd77e47a97f13834e94409f0e32aa6404fad0199d8e7c"
   license "MIT-Modern-Variant"
   head "https://github.com/flomesh-io/pipy.git", branch: "main"
 
@@ -16,7 +16,7 @@ class Pipy < Formula
   end
 
   depends_on "cmake" => :build
-  depends_on "llvm" => :build
+  depends_on "llvm@14" => :build
   depends_on "node" => :build
   depends_on "openssl@1.1"
   depends_on "snappy"
@@ -29,16 +29,14 @@ class Pipy < Formula
     openssl = Formula["openssl@1.1"]
     snappy = Formula["snappy"]
 
-    ENV["CI_COMMIT_SHA"] = "95eaf9f8e263b775e98167ec94ad5458a230c527"
-    ENV["CI_COMMIT_TAG"] = "0.50.0-18"
-    ENV["CI_COMMIT_DATE"] = "Mon, 18 Jul 2022 15:35:52 +0800"
+    ENV["CI_COMMIT_SHA"] = "210802332365904374ca77b9a53f41eb911fe61b"
+    ENV["CI_COMMIT_TAG"] = "0.70.0-2"
+    ENV["CI_COMMIT_DATE"] = "Fri, 21 Oct 2022 11:00:52 +0800"
 
     system "npm", "install", *Language::Node.local_npm_install_args
     system "npm", "run", "build"
 
     args = %W[
-      -DCMAKE_C_COMPILER=clang
-      -DCMAKE_CXX_COMPILER=clang++
       -DPIPY_GUI=ON
       -DPIPY_TUTORIAL=ON
       -DCMAKE_BUILD_TYPE=Release
