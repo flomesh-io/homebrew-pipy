@@ -25,7 +25,7 @@ class Pipy < Formula
   def install
     ENV.cxx11
     # link against system libc++ instead of llvm provided libc++
-    ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib
+    ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib if OS.mac?
     ENV.llvm_clang if OS.mac? && (DevelopmentTools.clang_build_version >= 1100)
 
     openssl = Formula["openssl@1.1"]
