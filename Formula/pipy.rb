@@ -16,7 +16,7 @@ class Pipy < Formula
   end
 
   depends_on "cmake" => :build
-  depends_on "llvm@13" => :build
+  depends_on "llvm@11" => :build
   depends_on "node" => :build
   depends_on "openssl@1.1"
   depends_on "snappy"
