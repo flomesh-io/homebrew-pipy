@@ -18,8 +18,8 @@ class Pipy < Formula
   depends_on "cmake" => :build
   depends_on "llvm@14" => :build
   depends_on "node" => :build
-  depends_on "openssl@1.1"
   depends_on "pkg-config" => :build
+  depends_on "openssl@1.1"
   depends_on "snappy"
 
   def install
