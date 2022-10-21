@@ -16,12 +16,12 @@ class Pipy < Formula
   end
 
   depends_on "cmake" => :build
-  depends_on "llvm@11" => :build
-  depends_on "pkg-config" => :build
+  depends_on "llvm@14" => :build
   depends_on "node" => :build
   depends_on "openssl@1.1"
   depends_on "snappy"
-
+  depends_on "pkg-config" => :build
+  
   def install
     ENV.cxx11
     # link against system libc++ instead of llvm provided libc++
