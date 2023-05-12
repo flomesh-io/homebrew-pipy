@@ -3,8 +3,8 @@ require "language/node"
 class Pipy < Formula
   desc "Programmable network proxy for the cloud, edge and IoT"
   homepage "https://flomesh.io"
-  url "https://github.com/flomesh-io/pipy/archive/refs/tags/0.70.0-2.tar.gz"
-  sha256 "98d42b75eeace8a480ebd77e47a97f13834e94409f0e32aa6404fad0199d8e7c"
+  url "https://github.com/flomesh-io/pipy/archive/refs/tags/0.90.1-10.tar.gz"
+  sha256 "9fcd22b5431e0f2ddb8ba9ba24e8df4c18a41e2e20c82c2ab4b643bbacc74fa1"
   license "MIT-Modern-Variant"
   head "https://github.com/flomesh-io/pipy.git", branch: "main"
 
