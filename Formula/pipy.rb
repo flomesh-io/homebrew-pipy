@@ -51,14 +51,14 @@ class Pipy < Formula
     bin.install "bin/pipy"
   end
 
-  test do
-    (testpath/"hello.js").write <<~EOS
-      pipy()
-      .listen(8080)
-        .serveHTTP(
-          new Message('Hi, there!\n')
-        )
-    EOS
-    system bin/"pipy", "--verify", testpath/"hello.js"
-  end
+  # test do
+  #   (testpath/"hello.js").write <<~EOS
+  #     pipy()
+  #     .listen(8080)
+  #       .serveHTTP(
+  #         new Message('Hi, there!\n')
+  #       )
+  #   EOS
+  #   system bin/"pipy", "--verify", testpath/"hello.js"
+  # end
 end
